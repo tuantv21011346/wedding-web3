@@ -1,0 +1,67 @@
+name: Wedding Web3 CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run linting
+      run: npm run lint
+      
+    - name: Build project
+      run: npm run build
+      env:
+        VITE_ALCHEMY_ID: ${{ secrets.VITE_ALCHEMY_ID }}
+        VITE_WALLET_CONNECT_ID: ${{ secrets.VITE_WALLET_CONNECT_ID }}
+        VITE_INFURA_IPFS_PROJECT_ID: ${{ secrets.VITE_INFURA_IPFS_PROJECT_ID }}
+        VITE_INFURA_IPFS_PROJECT_SECRET: ${{ secrets.VITE_INFURA_IPFS_PROJECT_SECRET }}
+        VITE_CONTRACT_ADDRESS_MUMBAI: ${{ secrets.VITE_CONTRACT_ADDRESS_MUMBAI }}
+        VITE_CONTRACT_ADDRESS_POLYGON: ${{ secrets.VITE_CONTRACT_ADDRESS_POLYGON }}
+        VITE_FORWARDER_ADDRESS_MUMBAI: ${{ secrets.VITE_FORWARDER_ADDRESS_MUMBAI }}
+        VITE_FORWARDER_ADDRESS_POLYGON: ${{ secrets.VITE_FORWARDER_ADDRESS_POLYGON }}
+        VITE_BICONOMY_API_KEY: ${{ secrets.VITE_BICONOMY_API_KEY }}
+    
+    - name: Deploy to Netlify
+      uses: netlify/actions/cli@master
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      with:
+        args: deploy --dir=dist --prod
+        
+    - name: Send notification on success
+      if: success()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: ":rocket: Wedding Web3 successfully deployed!"
+        SLACK_MESSAGE: "New version deployed to production"
+        SLACK_COLOR: good
+        
+    - name: Send notification on failure
+      if: failure()
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: ":x: Wedding Web3 deployment failed!"
+        SLACK_MESSAGE: "Deployment failed. Check the GitHub Actions logs."
+        SLACK_COLOR: danger

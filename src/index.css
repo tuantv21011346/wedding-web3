@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .container-wedding {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+    .gradient-primary {
+    @apply bg-gradient-to-r from-pastel-pink-400 to-pastel-purple-400;
+  }
+  
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-pastel-pink-100 to-pastel-purple-100;
+  }
+  
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-pastel-pink-600 to-pastel-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-pastel-pink-400 to-pastel-purple-500 bg-clip-text text-transparent;
+  }
+  
+  .shadow-primary {
+    @apply shadow-lg shadow-pastel-pink-300/30;
+  }
+  
+  .shadow-accent {
+    @apply shadow-lg shadow-pastel-purple-300/30;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-pastel-pink-600 to-pastel-purple-600 bg-clip-text text-transparent;
+  }
+}
