@@ -28,12 +28,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="text-center"
-      >
-        <div className="text-4xl md:text-6xl font-serif text-white mb-6">
+      >        <div className="text-4xl md:text-6xl font-heading text-white mb-6">
           <span className="text-primary-200">Đám</span> Cưới
         </div>
         
-        <div className="text-xl md:text-2xl font-light text-primary-100 mb-12">
+        <div className="text-xl md:text-2xl font-light text-primary-100 mb-12 font-body">
           Lưu Trữ Vĩnh Viễn Trên Blockchain
         </div>
         

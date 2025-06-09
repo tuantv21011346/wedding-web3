@@ -3,9 +3,18 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+    ],
   theme: {
-    extend: {      colors: {
+    extend: {
+      fontFamily: {
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'heading': ['Playfair Display', 'Times New Roman', 'serif'],
+        'script': ['Dancing Script', 'cursive'],
+        'elegant': ['Great Vibes', 'cursive'],
+        'body': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'serif': ['Playfair Display', 'serif'],
+      },
+      colors: {
         primary: {
           50: '#FDF2F8',   // Ultra light pink-purple pastel
           100: '#FCE7F3',  // Very light pink-purple pastel
@@ -65,13 +74,7 @@ export default {
           700: '#BE185D',
           800: '#9D174D',
           900: '#831843',
-        },
-      },
-      fontFamily: {
-        'sans': ['Poppins', 'sans-serif'],
-        'serif': ['Playfair Display', 'serif'],
-        'script': ['Great Vibes', 'cursive'],
-      },
+        },      },
       animation: {
         'fade-in': 'fadeIn 1s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',

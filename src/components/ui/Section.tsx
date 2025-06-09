@@ -21,9 +21,8 @@ const Section: React.FC<SectionProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
-    >
-      <h2 className="section-title">{title}</h2>
-      {subtitle && (        <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+    >      <h2 className="section-title font-heading">{title}</h2>
+      {subtitle && (        <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed font-body">
           {subtitle}
         </p>
       )}

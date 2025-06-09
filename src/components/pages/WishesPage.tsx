@@ -191,7 +191,7 @@ const WishesPage: React.FC = () => {
                 >
                   <Card>
                     <div className="flex items-start">
-                      <div className="w-12 h-12 rounded-full bg-primary-200 flex-shrink-0 flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 rounded-full bg-pastel-purple-200 flex-shrink-0 flex items-center justify-center mr-4">
                         {wish.imageIpfsHash ? (
                           <img
                             src={`https://ipfs.io/ipfs/${wish.imageIpfsHash}`}
@@ -199,7 +199,7 @@ const WishesPage: React.FC = () => {
                             className="w-12 h-12 rounded-full object-cover"
                           />
                         ) : (
-                          <span className="text-xl text-primary-700">
+                          <span className="text-xl text-pastel-purple-700">
                             {wish.senderName.charAt(0)}
                           </span>
                         )}
@@ -227,18 +227,17 @@ const WishesPage: React.FC = () => {
         </div>
       </Section>
       
-      <Section title="Blockchain là gì?" className="bg-primary-50">
+      <Section title="Blockchain là gì?" className="bg-pastel-purple-50">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-gray-600 mb-6">
             Blockchain là công nghệ lưu trữ phi tập trung, cho phép lưu trữ dữ liệu một cách an toàn và vĩnh viễn.
             Lời chúc của bạn sẽ được lưu trữ trên mạng Polygon - một blockchain tương thích với Ethereum
             nhưng nhanh hơn và tiết kiệm phí giao dịch.
           </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100 flex items-center justify-center">
-                <svg className="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-pastel-purple-100 flex items-center justify-center">
+                <svg className="w-8 h-8 text-pastel-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
@@ -247,10 +246,9 @@ const WishesPage: React.FC = () => {
                 Dữ liệu trên blockchain được mã hóa và bảo mật cao, không thể thay đổi sau khi đã xác nhận.
               </p>
             </Card>
-            
-            <Card className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100 flex items-center justify-center">
-                <svg className="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <Card className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-pastel-purple-100 flex items-center justify-center">
+                <svg className="w-8 h-8 text-pastel-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 22h14a2 2 0 002-2v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7a2 2 0 002 2zm11-2H8v-7h8v7z" />
                 </svg>
               </div>
@@ -259,10 +257,9 @@ const WishesPage: React.FC = () => {
                 Lời chúc của bạn sẽ được lưu trữ vĩnh viễn trên blockchain và không thể bị xóa bỏ.
               </p>
             </Card>
-            
-            <Card className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-100 flex items-center justify-center">
-                <svg className="w-8 h-8 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <Card className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-pastel-purple-100 flex items-center justify-center">
+                <svg className="w-8 h-8 text-pastel-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>

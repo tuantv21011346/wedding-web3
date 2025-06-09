@@ -1,8 +1,19 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  cursor: none; /* Ẩn con trỏ chuột mặc định */
+}
+
+/* Ẩn con trỏ cho tất cả elements */
+* {
+  cursor: none !important;
+}
+
+/* Đặc biệt cho các elements có thể click */
+button, a, input, textarea, select {
+  cursor: none !important;
 }
 
 .logo {
@@ -39,4 +50,37 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Hero Section Heights */
+.hero-section {
+  min-height: 55vh !important;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 65vh !important;
+  }
+}
+
+/* Mobile Button Styles */
+.mobile-button {
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+}
+
+.mobile-button .button-emoji {
+  font-size: 14px !important;
+}
+
+/* Desktop Button Styles */
+@media (min-width: 640px) {
+  .mobile-button {
+    padding: 16px 32px !important;
+    font-size: 18px !important;
+  }
+  
+  .mobile-button .button-emoji {
+    font-size: 20px !important;
+  }
 }

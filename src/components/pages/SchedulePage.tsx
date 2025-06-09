@@ -46,7 +46,7 @@ const SchedulePage: React.FC = () => {
         <div className="max-w-3xl mx-auto">
           <div className="relative">
             {/* Timeline center line */}
-            <div className="absolute left-0 md:left-1/2 top-0 h-full w-1 bg-primary-300 transform md:translate-x-0 translate-x-4"></div>
+            <div className="absolute left-0 md:left-1/2 top-0 h-full w-1 bg-pastel-purple-300 transform md:translate-x-0 translate-x-4"></div>
             
             {/* Timeline events */}
             {events.map((event, index) => (
@@ -64,7 +64,7 @@ const SchedulePage: React.FC = () => {
               >
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 translate-x-0">
-                  <div className="w-8 h-8 rounded-full bg-primary-500 border-4 border-white text-center leading-7">
+                  <div className="w-8 h-8 rounded-full bg-pastel-purple-500 border-4 border-white text-center leading-7">
                     {event.icon}
                   </div>
                 </div>
@@ -72,13 +72,13 @@ const SchedulePage: React.FC = () => {
                 {/* Content container */}
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 pl-12' : 'md:pl-12 pl-12'}`}>
                   <Card>
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary-200 text-primary-800 text-sm font-medium mb-3">
+                    <span className="inline-block px-3 py-1 rounded-full bg-pastel-purple-200 text-pastel-purple-800 text-sm font-medium mb-3">
                       {event.time}
                     </span>
                     <h3 className="text-xl font-medium text-gray-900 mb-2">{event.title}</h3>
                     <p className="text-gray-600 mb-3">{event.description}</p>
                     <div className="flex items-start">
-                      <svg className="w-5 h-5 text-primary-700 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-5 h-5 text-pastel-purple-700 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
@@ -94,7 +94,7 @@ const SchedulePage: React.FC = () => {
         </div>
       </Section>
       
-      <Section title="Dresscode" className="bg-primary-50">
+      <Section title="Dresscode" className="bg-pastel-purple-50">
         <div className="max-w-2xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div

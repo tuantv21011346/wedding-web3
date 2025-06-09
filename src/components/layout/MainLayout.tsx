@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Disclosure, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import ParticleEffects from '../ui/ParticleEffects';
 
 const navigation = [
   { name: 'Trang chủ', href: '/' },
   { name: 'Cô dâu & Chú rể', href: '/couple' },
-  { name: 'Ảnh cưới', href: '/gallery' },
+  { name: 'Dòng thời gian', href: '/timeline-gallery' },
   { name: 'Lịch trình', href: '/schedule' },
   { name: 'Địa điểm', href: '/location' },
   { name: 'Lời chúc', href: '/wishes' },
@@ -22,16 +23,27 @@ interface MainLayoutProps {
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
 
+  // Scroll to top when pathname changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [pathname]);
+
   const pageTransition = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -20 },
     transition: { duration: 0.3 }
   };
-
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-pastel-purple-50 via-white to-pastel-pink-50">
-      <Disclosure as="nav" className="bg-white/95 backdrop-blur-md shadow-lg border-b border-primary-100 sticky top-0 z-50">
+      {/* Particle Effects */}
+      <ParticleEffects />
+      
+      <Disclosure as="nav" className="bg-white/95 backdrop-blur-md shadow-lg border-b border-pastel-pink-100 sticky top-0 z-50">
         {({ open }) => (
           <>
             <div className="container-wedding py-2">
@@ -103,7 +115,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                     <Disclosure.Button
                       key={item.name}
                       as={Link}
-                      to={item.href}                      className={`block px-4 py-3 text-base font-medium rounded-xl w-full text-left transition-all duration-200 ${
+                      to={item.href}                     
+                      className={`block px-4 py-3 text-base font-medium rounded-xl w-full text-left transition-all duration-200 ${
                         pathname === item.href
                           ? 'text-white bg-gradient-to-r from-pastel-pink-400 to-pastel-purple-400 shadow-lg'
                           : 'text-gray-700 hover:text-pastel-pink-600 hover:bg-pastel-pink-50'
@@ -120,10 +133,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             </Transition>
           </>
         )}
-      </Disclosure>
-
-      {/* Main Content */}
-      <main className="flex-grow">
+      </Disclosure>      {/* Main Content */}
+      <main className="flex-grow relative z-10">
         <div className="container-wedding py-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -132,19 +143,19 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               animate={pageTransition.animate}
               exit={pageTransition.exit}
               transition={pageTransition.transition}
+              className="relative z-20"
             >
               {children}
             </motion.div>
           </AnimatePresence>
         </div>
       </main>      {/* Footer */}
-      <footer className="relative overflow-hidden">
-        {/* Background with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-primary-900 to-accent-900">
-          <div className="absolute inset-0 opacity-30 bg-gradient-to-r from-primary-500/20 to-accent-500/20"></div>
+      <footer className="relative overflow-hidden z-30">{/* Background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-pastel-purple-900 to-pastel-pink-900">
+          <div className="absolute inset-0 opacity-30 bg-gradient-to-r from-pastel-purple-500/20 to-pastel-pink-500/20"></div>
           {/* Decorative elements */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-pastel-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pastel-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="relative z-10 py-16">
@@ -153,40 +164,37 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               {/* Logo và thông tin chính */}
               <div className="space-y-6">
                 <div className="flex justify-center md:justify-start">
-                  <div className="relative group">
-                    <h3 className="font-script text-5xl bg-gradient-to-r from-primary-300 via-accent-300 to-wedding-300 bg-clip-text text-transparent font-bold">
+                  <div className="relative group">                    <h3 className="font-script text-5xl bg-gradient-to-r from-pastel-purple-300 via-pastel-pink-300 to-pastel-purple-300 bg-clip-text text-transparent font-bold">
                       MITU
                     </h3>
-                    <div className="absolute -inset-3 bg-gradient-to-r from-primary-600 to-accent-600 rounded-lg blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    <div className="absolute -inset-3 bg-gradient-to-r from-pastel-purple-600 to-pastel-pink-600 rounded-lg blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
                   </div>
                 </div>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
                   Một trang web cưới hiện đại với công nghệ Web3, 
                   lưu trữ lời chúc vĩnh viễn trên blockchain. 
                   Tình yêu bất tử, kỷ niệm vĩnh cửu.
-                </p>
-                <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-primary-900/60 text-primary-200 border border-primary-700/50 backdrop-blur-sm hover:bg-primary-800/60 transition-colors">
+                </p>                <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-pastel-purple-900/60 text-pastel-purple-200 border border-pastel-purple-700/50 backdrop-blur-sm hover:bg-pastel-purple-800/60 transition-colors">
                     ⚛️ React
                   </span>
-                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-accent-900/60 text-accent-200 border border-accent-700/50 backdrop-blur-sm hover:bg-accent-800/60 transition-colors">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-pastel-pink-900/60 text-pastel-pink-200 border border-pastel-pink-700/50 backdrop-blur-sm hover:bg-pastel-pink-800/60 transition-colors">
                     🔗 Polygon
                   </span>
-                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-wedding-900/60 text-wedding-200 border border-wedding-700/50 backdrop-blur-sm hover:bg-wedding-800/60 transition-colors">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full text-xs font-medium bg-pastel-purple-900/60 text-pastel-purple-200 border border-pastel-purple-700/50 backdrop-blur-sm hover:bg-pastel-purple-800/60 transition-colors">
                     🌐 Web3
                   </span>
                 </div>
               </div>
 
-              {/* Navigation Links */}
-              <div className="space-y-6">
-                <h4 className="text-xl font-semibold text-white font-serif">Khám phá</h4>
+              {/* Navigation Links */}              <div className="space-y-6">
+                <h4 className="text-xl font-semibold text-white font-heading">Khám phá</h4>
                 <div className="grid grid-cols-2 gap-3">
                   {navigation.slice(0, 6).map((item) => (
                     <Link
                       key={item.name}
                       to={item.href}
-                      className="text-gray-300 hover:text-primary-300 transition-all duration-200 text-sm hover:underline underline-offset-4 decoration-primary-400 decoration-2 hover:translate-x-1 transform"
+                      className="text-gray-300 hover:text-pastel-purple-300 transition-all duration-200 text-sm hover:underline underline-offset-4 decoration-pastel-purple-400 decoration-2 hover:translate-x-1 transform"
                     >
                       {item.name}
                     </Link>
@@ -200,9 +208,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 </div>
               </div>
 
-              {/* Wedding Info */}
-              <div className="space-y-6">
-                <h4 className="text-xl font-semibold text-white font-serif">Thông tin đám cưới</h4>
+              {/* Wedding Info */}              <div className="space-y-6">
+                <h4 className="text-xl font-semibold text-white font-heading">Thông tin đám cưới</h4>
                 <div className="space-y-4 text-sm text-gray-300">
                   <div className="flex items-center justify-center md:justify-start group">
                     <span className="mr-3 text-lg group-hover:scale-110 transition-transform">📅</span>
@@ -231,7 +238,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 <div className="pt-4">
                   <p className="text-sm font-medium text-white mb-3">Theo dõi chúng tôi</p>
                   <div className="flex justify-center md:justify-start space-x-4">
-                    <button className="w-10 h-10 rounded-full bg-primary-800/50 hover:bg-primary-700/60 border border-primary-600/50 flex items-center justify-center transition-all duration-200 hover:scale-110">
+                    <button className="w-10 h-10 rounded-full bg-pastel-purple-800/50 hover:bg-pastel-purple-700/60 border border-pastel-purple-600/50 flex items-center justify-center transition-all duration-200 hover:scale-110">
                       <span className="text-sm">📱</span>
                     </button>
                     <button className="w-10 h-10 rounded-full bg-accent-800/50 hover:bg-accent-700/60 border border-accent-600/50 flex items-center justify-center transition-all duration-200 hover:scale-110">
@@ -248,7 +255,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             {/* Decorative Divider */}
             <div className="my-12">
               <div className="relative h-px">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-400/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pastel-purple-400/30 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-400/30 to-transparent blur-sm"></div>
               </div>
             </div>
@@ -259,14 +266,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 <p className="mb-1">© {new Date().getFullYear()} MITU Wedding. Được phát triển với 💜 bằng React & Web3.</p>
                 <p className="text-xs text-gray-500">Powered by Polygon Network • Gasless transactions via Biconomy</p>
               </div>
-              <div className="flex items-center space-x-8 text-sm text-gray-400">
-                <button className="hover:text-primary-300 transition-colors cursor-pointer hover:underline underline-offset-4">
+              <div className="flex items-center space-x-8 text-sm text-gray-400">                <button className="hover:text-pastel-purple-300 transition-colors cursor-pointer hover:underline underline-offset-4">
                   Chính sách bảo mật
                 </button>
-                <button className="hover:text-primary-300 transition-colors cursor-pointer hover:underline underline-offset-4">
+                <button className="hover:text-pastel-purple-300 transition-colors cursor-pointer hover:underline underline-offset-4">
                   Điều khoản sử dụng
                 </button>
-                <button className="hover:text-primary-300 transition-colors cursor-pointer hover:underline underline-offset-4">
+                <button className="hover:text-pastel-purple-300 transition-colors cursor-pointer hover:underline underline-offset-4">
                   Liên hệ hỗ trợ
                 </button>
               </div>

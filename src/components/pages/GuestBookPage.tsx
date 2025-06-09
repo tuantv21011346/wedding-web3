@@ -104,7 +104,7 @@ const GuestBookPage: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <span className="text-4xl font-bold text-primary-800">{entries.length}</span>
+              <span className="text-4xl font-bold text-pastel-purple-800">{entries.length}</span>
               <p className="text-gray-600">Khách mời đã ký tên</p>
             </div>
             
@@ -128,14 +128,14 @@ const GuestBookPage: React.FC = () => {
                 >
                   <Card>
                     <div className="flex items-start">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary-400 to-accent-400 flex-shrink-0 flex items-center justify-center text-white font-medium text-xl mr-4">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-pastel-purple-400 to-pastel-pink-400 flex-shrink-0 flex items-center justify-center text-white font-medium text-xl mr-4">
                         {entry.name.charAt(0)}
                       </div>
                       <div className="flex-grow">
                         <div className="flex flex-wrap justify-between items-center mb-2">
                           <h4 className="font-medium text-gray-900 mr-2">{entry.name}</h4>
                           {entry.relationship && (
-                            <span className="text-xs bg-primary-100 text-primary-800 px-2 py-1 rounded-full">
+                            <span className="text-xs bg-pastel-purple-100 text-pastel-purple-800 px-2 py-1 rounded-full">
                               {entry.relationship}
                             </span>
                           )}
@@ -200,7 +200,7 @@ const GuestBookPage: React.FC = () => {
         </div>
       </Section>
       
-      <Section title="Cảm ơn" className="bg-primary-50 text-center">
+      <Section title="Cảm ơn" className="bg-pastel-purple-50 text-center">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -212,8 +212,7 @@ const GuestBookPage: React.FC = () => {
               Chúng tôi vô cùng biết ơn sự hiện diện của bạn trong ngày trọng đại của chúng tôi.
               Tình cảm và lời chúc của bạn là món quà vô giá đối với chúng tôi.
             </p>
-            
-            <div className="text-4xl font-script text-primary-800 mb-6">
+              <div className="text-4xl font-script text-pastel-purple-800 mb-6">
               Tuyến & Minh
             </div>
             
